@@ -11,6 +11,10 @@ async function run(): Promise<void> {
     const build = core.getInput('build') == 'true'
     for (var index in packages) {
       core.startGroup(`OfBuild: build ${packages[index]}`)
+      if (packages[index].indexOf(" ") != -1 || packages[index].indexOf("nixos/") != -1) {
+        core.warning(`not a package string: ${packages[index]}`);
+	continue;
+      }
       if (build) {
         await exec.exec('nix-build', ['.', '-A', packages[index]])
       } else {
