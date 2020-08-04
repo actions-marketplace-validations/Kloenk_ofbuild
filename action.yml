@@ -1,6 +1,9 @@
 name: 'OfBuild'
 description: 'Build packages from github action like OfBorg'
 author: 'Finn Behrens'
+branding:
+  color: 'black'
+  icon: 'check'
 inputs:
   build:
     description: "wether to run nix-build"
